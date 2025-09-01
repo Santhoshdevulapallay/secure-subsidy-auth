@@ -29,12 +29,12 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Client-side validation
-    // const validation = validateLoginForm(formData.username, formData.password);
-    // if (!validation.isValid) {
-    //   setErrors(validation.errors);
-    //   return;
-    // }
+    // Simple validation for dummy admin user
+    if (formData.username === 'admin' && formData.password !== 'admin') {
+      setErrors({ password: 'Admin password must be "admin"' });
+      setIsLoading(false);
+      return;
+    }
 
     setIsLoading(true);
     setErrors({});
