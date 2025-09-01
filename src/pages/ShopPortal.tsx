@@ -23,7 +23,19 @@ const ShopPortal = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Get current user info on component mount
+    // Mock user data for testing without backend
+    const mockUser = {
+      id: 1,
+      username: 'shop',
+      email: 'shop@example.com',
+      role: 'shop',
+      full_name: 'Shop User'
+    };
+    
+    setUser(mockUser);
+    
+    // TODO: Uncomment when backend is ready
+    /*
     const getCurrentUser = async () => {
       try {
         const response = await authApi.getCurrentUser();
@@ -41,11 +53,14 @@ const ShopPortal = () => {
     };
 
     getCurrentUser();
+    */
   }, [navigate]);
 
   const handleLogout = async () => {
     try {
-      await authApi.logout();
+      // TODO: Uncomment when backend is ready
+      // await authApi.logout();
+      
       toast({
         title: "Logged Out",
         description: "You have been successfully logged out.",
