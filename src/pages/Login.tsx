@@ -30,11 +30,11 @@ const Login = () => {
     e.preventDefault();
     
     // Client-side validation
-    const validation = validateLoginForm(formData.username, formData.password);
-    if (!validation.isValid) {
-      setErrors(validation.errors);
-      return;
-    }
+    // const validation = validateLoginForm(formData.username, formData.password);
+    // if (!validation.isValid) {
+    //   setErrors(validation.errors);
+    //   return;
+    // }
 
     setIsLoading(true);
     setErrors({});
