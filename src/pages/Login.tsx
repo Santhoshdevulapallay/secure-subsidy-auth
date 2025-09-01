@@ -40,8 +40,35 @@ const Login = () => {
     setErrors({});
 
     try {
-      const response = await authApi.login(formData);
+      // TODO: Uncomment when Django backend is ready
+      // const response = await authApi.login(formData);
       
+      // Temporary: Simulate successful login for testing
+      const mockResponse = {
+        success: true,
+        user: {
+          id: 1,
+          username: formData.username,
+          email: `${formData.username}@example.com`,
+          role: formData.username === 'admin' ? 'admin' : 
+                formData.username.includes('shop') ? 'shop' : 'citizen',
+          full_name: `Test ${formData.username}`,
+        }
+      };
+      
+      if (mockResponse.success && mockResponse.user) {
+        toast({
+          title: "Login Successful",
+          description: `Welcome back, ${mockResponse.user.full_name || mockResponse.user.username}!`,
+        });
+
+        // Role-based redirect
+        const redirectPath = getRoleBasedRedirect(mockResponse.user.role as string);
+        navigate(redirectPath);
+      }
+      
+      /* 
+      // Original API call - uncomment when backend is ready
       if (response.success && response.user) {
         toast({
           title: "Login Successful",
@@ -52,6 +79,7 @@ const Login = () => {
         const redirectPath = getRoleBasedRedirect(response.user.role);
         navigate(redirectPath);
       }
+      */
     } catch (error: any) {
       if (error.errors) {
         setErrors(error.errors);
