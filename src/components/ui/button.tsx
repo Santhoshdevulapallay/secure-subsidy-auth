@@ -20,7 +20,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Government-specific variants
         government: "bg-primary text-primary-foreground hover:bg-primary-hover shadow-md font-semibold",
-        google: "bg-white text-gray-700 border border-input-border hover:bg-gray-50 shadow-sm",
+        google: "bg-card text-card-foreground border border-input-border hover:bg-accent hover:text-accent-foreground shadow-sm",
         success: "bg-success text-success-foreground hover:bg-success/90",
         warning: "bg-warning text-warning-foreground hover:bg-warning/90",
       },
